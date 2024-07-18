@@ -1,0 +1,10 @@
+{
+  "exe":[],
+  "code":["json","xml","cert","ruby","java","fortran","pascal"],
+  "doc":["pdf","msword","document","powerpoint","info"],
+  "excel":["excel","spreadsheet","calendar"],
+  "archive":["zip","archive","torrent","tar","rar","iso","bin"],
+  "image":[],
+  "video":[],
+  "audio":[]
+}

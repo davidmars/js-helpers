@@ -1,0 +1,31 @@
+{
+  "exe":[
+    "exe","msi","dmg","app","bat","apk","com","dll",
+    "sh","dll","swf"
+  ],
+  "code":[
+    "class","p","pl","pm","java","conf","php","so","cpp","js","php","gem","h","c","tex","jnlp","a","tcl","htm","html","css",
+    "py","rb",
+    "asc","sh",
+    "crt","pgp",
+    "yaml","yml","json","xml","manifest"
+  ],
+  "doc":[
+    "txt","rtf","pdf","eml","chm","sig","mime","log"
+  ],
+  "excel":[
+    "csv"
+  ],
+  "archive":[
+    "iso","bin","dmg","pkg","mbox","cab","deb","rpm"
+  ],
+  "image":[
+    "eps","ai","psd","ps","dvi","svg"
+  ],
+  "video":[
+    "mp4","avi","mov"
+  ],
+  "audio":[
+    "mp3","wav","ogg"
+  ]
+}

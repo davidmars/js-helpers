@@ -1,0 +1,10 @@
+{
+  "exe":[],
+  "code":[],
+  "doc":["text"],
+  "excel":[],
+  "archive":[],
+  "image":["image"],
+  "video":["video","model"],
+  "audio":["audio"]
+}

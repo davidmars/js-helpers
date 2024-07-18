@@ -1,0 +1,33 @@
+{
+  "name": "@davidmars/js-helpers",
+  "version": "0.0.1",
+  "private": false,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "/dist"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc",
+    "preview": "vite preview",
+    "version patch & push": "npm version patch && git push --all",
+    "publish-lib": "npm run build && npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/davidmars/js-helpers.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "devDependencies": {
+    "vite": "5.2.6",
+    "vite-plugin-dts": "^1.7.3"
+  },
+  "dependencies": {
+    "eventemitter3": "^5.0.1",
+    "filesize": "^10.1.0",
+    "typescript": "^5.1.6"
+  }
+}
