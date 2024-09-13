@@ -25,8 +25,11 @@ console.log("manager.win.height = ", manager.win.height  );
 console.log("manager.win.width = ", manager.win.width  );
 console.log("manager.win.scroll = ", manager.win.scroll  );
 
-manager.ls.setItem("test","test");
-console.log("manager.ls.setItem('test','test')");
+manager.ls.setItem("test","test"+Math.random());
+console.log("manager.ls.setItem('test','test'+Math.random())");
+manager.ls.evt.on('change',(key)=>{
+  console.log("manager.ls.evt.on('change',(key)=>{}",key,manager.ls.getItem(key));
+})
 console.log("manager.ls.getItem('test') = ", manager.ls.getItem('test')  );
 console.log("manager.ls.getItem('test2') = ", manager.ls.getItem('test2')  );
 console.log("manager.ls.getItem('test2','valeur par défaut') = ", manager.ls.getItem('test2','valeur par défaut')  );
