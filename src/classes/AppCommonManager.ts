@@ -1,5 +1,5 @@
 import LocalStorageJson from "./LocalStorageJson";
-import WinPropsListener from "@davidmars/js-helpers/dist/classes/WinPropsListener";
+import WinPropsListener from "./WinPropsListener";
 
 export default class AppCommonManager {
   /**
