@@ -1,4 +1,4 @@
-import EventEmitter from "eventemitter3";
+import { EventEmitter } from 'eventemitter3';
 
 /**
  * La classe LocalStorageJson permet de stocker des objets dans le local storage sous forme de json

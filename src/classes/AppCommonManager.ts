@@ -17,6 +17,10 @@ export default class AppCommonManager {
    */
   public  version: string="?.?.?";
   /**
+   * Nom de l'application qui sera utilisé pour le nom du LocalStorage
+   */
+  public appName: string="";
+  /**
    * Un endroit où stocker des informations de débogage
    */
   public debug={
@@ -25,13 +29,14 @@ export default class AppCommonManager {
 
   /**
    * Vous devez appeler init() après avoir instancié cette classe
-   * Pour les arguments vous pouvez par exemple utiliser <code>import packageJson from "../package.json?inline"</code> pour récupérer les informations du package.json
+   * Pour les arguments, vous pouvez par exemple utiliser <code>import packageJson from "../package.json?inline"</code> pour récupérer les informations du package.json
    * @param appName Nom de l'application qui sera utilisé pour le nom du LocalStorage
    * @param version Version de l'application
    */
   public constructor(appName:string,version:string){
     this.ls=new LocalStorageJson(appName);
     this.version=version;
+    this.appName=appName;
   }
 
   /**
