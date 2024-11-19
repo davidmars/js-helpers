@@ -3,8 +3,18 @@ import packageJson from "../package.json?inline"
 import humanFileSize from "./files/humanFileSize";
 import queryString from "./browser/queryString";
 import AppCommonManager from "./classes/AppCommonManager";
+import roundTo from "./math/roundTo";
 
 console.log("Hello world"   );
+console.log("--------------------")
+console.log("roundTo(159.5)",roundTo(159.5,5));
+console.log("float error 0.1*0.2 ",0.1*0.2);
+console.log(
+    "roundTo(0.1*0.2 ,0.01)",
+    roundTo( 0.1*0.2 ,0.01 ),
+    "fixed :)"
+);
+
 console.log("--------------------")
 console.log("humanFileSize(1000) = ", humanFileSize(1000)   );
 console.log("humanFileSize(1000, 'fr') = ", humanFileSize(1000, 'fr')   );
