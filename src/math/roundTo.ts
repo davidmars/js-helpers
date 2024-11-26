@@ -4,11 +4,10 @@
  * @example roundTo(16,5) -> 15
  * @example roundTo(16,100) -> 0
  * @example roundTo(160,100) -> 200
- * @param number
+ * @param num
  * @param precision
  */
-export default function roundTo(number: number, precision: number) {
-  const factor = Math.pow(10, precision);
-  return Math.round(number * factor) / factor;
+export default function roundTo(num: number, precision: number) {
+  return Math.round((num + Number.EPSILON) * precision) / precision
 }
 

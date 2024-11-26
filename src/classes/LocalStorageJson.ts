@@ -94,11 +94,11 @@ export default class LocalStorageJson {
     /**
      * Récupère un item du storage
      * @param key
-     * @param ifNull
+     * @param ifNotDefined
      */
-    getItem(key:string,ifNull:any=null):any {
-        if(!this.data[key]){
-            return ifNull;
+    getItem(key:string,ifNotDefined:any=null):any {
+        if(this.data[key] === undefined){
+            return ifNotDefined;
         }
         return this.data[key];
     }
