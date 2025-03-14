@@ -30,10 +30,17 @@ export default class IframeMessageSender {
     return $ifr as HTMLIFrameElement;
   }
 
+  /**
+   * Vérifie si l'iframe existe
+   */
+  public $iframeExists(){
+    return !! document.querySelector(this.iframeSelector);
+  }
+
 
 
   public postMessage(data:any){
-    console.log('IframeMessageSender postMessage',this.iframeSelector,this.domain,);
+    //console.log('IframeMessageSender postMessage',this.iframeSelector,this.domain,);
     (this.$iframe.contentWindow as Window).postMessage(
       data,
       this.domain
