@@ -17,7 +17,6 @@ export default class IframeMessageSender {
   protected get domain(){
     let $ifr=this.$iframe;
     if(!$ifr) {
-      console.error("Iframe not found :(", this.iframeSelector);
       return "";
     }
     return new URL($ifr.src).origin;
@@ -25,7 +24,7 @@ export default class IframeMessageSender {
   protected get $iframe():HTMLIFrameElement{
     let $ifr=document.querySelector(this.iframeSelector) as HTMLIFrameElement;
     if(!$ifr) {
-      console.error("Iframe not found :(", this.iframeSelector);
+      console.warn("No background iframe :(", this.iframeSelector);
     }
     return $ifr as HTMLIFrameElement;
   }
@@ -40,11 +39,13 @@ export default class IframeMessageSender {
 
 
   public postMessage(data:any){
-    //console.log('IframeMessageSender postMessage',this.iframeSelector,this.domain,);
-    (this.$iframe.contentWindow as Window).postMessage(
-      data,
-      this.domain
-    );
+    if(this.$iframe && this.$iframe.contentWindow){
+      //console.log('IframeMessageSender postMessage',this.iframeSelector,this.domain,);
+      (this.$iframe.contentWindow as Window).postMessage(
+        data,
+        this.domain
+      );
+    }
   }
 
 }
