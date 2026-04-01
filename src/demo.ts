@@ -4,6 +4,7 @@ import humanFileSize from "./files/humanFileSize";
 import queryString from "./browser/queryString";
 import AppCommonManager from "./classes/AppCommonManager";
 import roundTo from "./math/roundTo";
+import CnilPasswordChecker from "./valid/CnilPasswordChecker";
 
 console.log("Hello world"   );
 console.log("--------------------")
@@ -43,3 +44,33 @@ manager.ls.evt.on('change',(key)=>{
 console.log("manager.ls.getItem('test') = ", manager.ls.getItem('test')  );
 console.log("manager.ls.getItem('test2') = ", manager.ls.getItem('test2')  );
 console.log("manager.ls.getItem('test2','valeur par défaut') = ", manager.ls.getItem('test2','valeur par défaut')  );
+
+console.log("--------------------");
+console.log("Démo CnilPasswordChecker multilingue");
+
+const checker = new CnilPasswordChecker();
+const strongPwd = "MonMotDePasse1!";
+checker.pwd = strongPwd;
+console.log("pwd testé (fort) =", strongPwd);
+console.log("checker.isValid (fr) =", checker.isValid);
+console.log("checker.rules (fr) =", checker.rules);
+
+CnilPasswordChecker.lang = "en";
+console.log("checker.rules (en) =", checker.rules.map((rule) => rule.label));
+
+CnilPasswordChecker.addLang("pt", {
+  minLength: "Pelo menos 12 caracteres",
+  hasUppercase: "Pelo menos 1 letra maiúscula",
+  hasLowercase: "Pelo menos 1 letra minúscula",
+  hasDigit: "Pelo menos 1 dígito",
+  hasSpecial: "Pelo menos 1 caractere especial (!@#$…)",
+});
+CnilPasswordChecker.lang = "pt";
+console.log("checker.rules (pt) =", checker.rules.map((rule) => rule.label));
+
+const weakPwd = "faible";
+checker.pwd = weakPwd;
+console.log("pwd testé (contre-exemple faible) =", weakPwd);
+console.log("checker.isValid (pt) =", checker.isValid);
+console.log("checker.errors (pt) =", checker.errors);
+
