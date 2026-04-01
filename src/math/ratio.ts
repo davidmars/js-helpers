@@ -7,6 +7,6 @@
  * @param maxOutput
  */
 export function ratio (input:number,minInput:number, maxInput:number,minOutput:number, maxOutput:number) {
-    let factor = (input - minInput) / (maxInput - minInput);
+    const factor = (input - minInput) / (maxInput - minInput);
     return ((maxOutput - minOutput) * factor) + minOutput;
 }

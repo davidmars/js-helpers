@@ -7,7 +7,7 @@ export default function trimEmail(email: string, maxLength: number = 14) {
     if (email.length <= maxLength) {
         return email;
     }
-    let sp = email.split("@");
+    const sp = email.split("@");
     let dif = email.length - maxLength;
     let cut = sp[0].length - dif;
     cut = Math.max(4, cut);

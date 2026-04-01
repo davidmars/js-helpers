@@ -15,14 +15,14 @@ export default class IframeMessageSender {
   }
 
   protected get domain(){
-    let $ifr=this.$iframe;
+    const $ifr=this.$iframe;
     if(!$ifr) {
       return "";
     }
     return new URL($ifr.src).origin;
   }
   protected get $iframe():HTMLIFrameElement{
-    let $ifr=document.querySelector(this.iframeSelector) as HTMLIFrameElement;
+    const $ifr=document.querySelector(this.iframeSelector) as HTMLIFrameElement;
     if(!$ifr) {
       console.warn("No background iframe :(", this.iframeSelector);
     }

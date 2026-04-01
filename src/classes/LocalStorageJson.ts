@@ -32,7 +32,7 @@ export default class LocalStorageJson {
 
         addEventListener("storage", (event) => {
           if(event.key === this.name){
-            let changed= this.compare(event.newValue);
+            const changed= this.compare(event.newValue);
             this.parse();
             changed.forEach((key)=>{
               this.evt.emit("change",key);

@@ -25,7 +25,7 @@ console.log("Essayez de recharger la page avec ?hello=world dans l'url"   );
 console.log(`queryString("hello") = `, queryString("hello")   );
 
 console.log("--------------------")
-let manager=new AppCommonManager((packageJson as any).name, (packageJson as any).version);
+const manager=new AppCommonManager((packageJson as any).name, (packageJson as any).version);
 manager.init();
 console.log(`let manager=new AppCommonManager((packageJson as any).name, (packageJson as any).version);`);
 console.log(`manager.init();`);
