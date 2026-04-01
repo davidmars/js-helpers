@@ -7,27 +7,27 @@
 
 ## Table des matières
 
-- [📦 Array](#-array)
-- [🌐 Browser](#-browser)
-- [🏗️ Classes](#️-classes)
-- [🎨 Colors](#-colors)
-- [📅 Date](#-date)
-- [📁 Files](#-files)
-- [🌍 Geo](#-geo)
-- [💬 Human Spoken](#-human-spoken)
-- [✨ Magics](#-magics)
-- [🔢 Math](#-math)
-- [🖱️ Mouse](#️-mouse)
-- [📦 Objects](#-objects)
-- [🔤 String](#-string)
-- [🔍 Type Checking](#-type-checking)
-- [🔄 TypeCast](#-typecast)
-- [✅ Valid](#-valid)
-- [🪟 Window](#-window)
+- [Array](#array)
+- [Browser](#browser)
+- [Classes](#classes)
+- [Colors](#colors)
+- [Date](#date)
+- [Files](#files)
+- [Geo](#geo)
+- [Human Spoken](#human-spoken)
+- [Magics](#magics)
+- [Math](#math)
+- [Mouse](#mouse)
+- [Objects](#objects)
+- [String](#string)
+- [Type Checking](#type-checking)
+- [TypeCast](#typecast)
+- [Valid](#valid)
+- [Window](#window)
 
 ---
 
-## 📦 Array
+## Array
 
 ### `arrayShuffle`
 
@@ -97,7 +97,7 @@ randomEntry(['rouge', 'vert', 'bleu'])
 
 ---
 
-## 🌐 Browser
+## Browser
 
 ### `copyClipboard`
 
@@ -332,7 +332,7 @@ registerSW(
 
 ---
 
-## 🏗️ Classes
+## Classes
 
 ### `AppCommonManager`
 
@@ -445,7 +445,7 @@ console.log(win.isOnline)  // → true
 
 ---
 
-## 🎨 Colors
+## Colors
 
 ### `atomFileSizeColor`
 
@@ -489,7 +489,7 @@ blendColors('#ff0000', '#0000ff', 0)     // → '#ff0000'  (couleur A intacte)
 
 ---
 
-## 📅 Date
+## Date
 
 ### `date19991231_2359`
 
@@ -552,7 +552,7 @@ msToHHMMSS(0)        // → '00:00:00'
 
 ---
 
-## 📁 Files
+## Files
 
 ### `downloadBlob`
 
@@ -723,7 +723,7 @@ trimSlashes('chemin/')       // → 'chemin'
 
 ---
 
-## 🌍 Geo
+## Geo
 
 ### `distanceLatLng`
 
@@ -747,7 +747,7 @@ const km = distanceLatLng(48.8566, 2.3522, 43.2965, 5.3698) / 1000
 
 ---
 
-## 💬 Human Spoken
+## Human Spoken
 
 ### `humanSpokenJoin`
 
@@ -778,7 +778,7 @@ humanSpokenJoin(['uno', 'dos', 'tres'], 'es')
 
 ---
 
-## ✨ Magics
+## Magics
 
 ### `Folks`
 
@@ -808,7 +808,7 @@ folks.getItem('count')  // → 0
 
 ---
 
-## 🔢 Math
+## Math
 
 ### `clamp`
 
@@ -995,7 +995,7 @@ roundTo(1.236, 0.01) // → 1.24  (arrondi à 2 décimales)
 
 ---
 
-## 🖱️ Mouse
+## Mouse
 
 ### `mouseRelativePosition`
 
@@ -1016,7 +1016,7 @@ element.addEventListener('mousemove', (e) => {
 
 ---
 
-## 📦 Objects
+## Objects
 
 ### `keySortAlpha`
 
@@ -1055,7 +1055,7 @@ toPlainJson([1, 2, { b: 'ok' }])
 
 ---
 
-## 🔤 String
+## String
 
 ### `ellipsis`
 
@@ -1282,7 +1282,7 @@ trimEmail('a@b.fr', 14)
 
 ---
 
-## 🔍 Type Checking
+## Type Checking
 
 ### `basicTypeOf`
 
@@ -1306,7 +1306,7 @@ basicTypeOf(() => {})      // → 'function'
 
 ---
 
-## 🔄 TypeCast
+## TypeCast
 
 ### `isInstanceOf`
 
@@ -1345,7 +1345,7 @@ isString(null)               // → false
 
 ---
 
-## ✅ Valid
+## Valid
 
 ### `CnilPasswordChecker`
 
@@ -1371,6 +1371,10 @@ Classe de validation d'un mot de passe selon les recommandations **CNIL 2022** (
 | `errors` | `string[]` | Libellés des règles **non respectées** |
 | `successes` | `string[]` | Libellés des règles **respectées** |
 | `isValid` | `boolean` | `true` si **toutes** les règles sont OK |
+| `CnilPasswordChecker.lang` | `LangCode` | Langue courante des libellés (`fr`, `en`, `es`, `de`, `it`, ou custom) |
+| `CnilPasswordChecker.RULE_DEFS` | `Omit<PasswordRule, 'ok'>[]` | Définitions de règles dans la langue courante |
+
+**Types exportés :** `PasswordRule`, `Lang`, `LangCode`, `RuleKey`, `LangTranslations`.
 
 ```typescript
 const checker = new CnilPasswordChecker()
@@ -1394,6 +1398,21 @@ console.log(checker.rules)
 checker.pwd = 'faible'
 console.log(checker.errors)
 // → ['Au moins 12 caractères', 'Au moins 1 lettre majuscule', 'Au moins 1 chiffre', 'Au moins 1 caractère spécial (…)']
+
+// Changer la langue des libellés intégrés
+CnilPasswordChecker.lang = 'en'
+console.log(checker.rules.map((r) => r.label))
+// → ['At least 12 characters', 'At least 1 uppercase letter', ...]
+
+// Ajouter une langue personnalisée
+CnilPasswordChecker.addLang('pt', {
+  minLength: 'Pelo menos 12 caracteres',
+  hasUppercase: 'Pelo menos 1 letra maiúscula',
+  hasLowercase: 'Pelo menos 1 letra minúscula',
+  hasDigit: 'Pelo menos 1 dígito',
+  hasSpecial: 'Pelo menos 1 caractere especial (!@#$…)',
+})
+CnilPasswordChecker.lang = 'pt'
 ```
 
 ---
@@ -1454,7 +1473,7 @@ isValidUrl('pas une url')                      // → false
 
 ---
 
-## 🪟 Window
+## Window
 
 ### `IframeMessageSender`
 
