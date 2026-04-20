@@ -68,8 +68,8 @@ export default class CnilPasswordChecker {
    */
   private static readonly TRANSLATIONS: Record<string, Omit<PasswordRule, "ok">[]> = {};
 
-  /** Enregistrement des 5 langues intégrées via {@link addLang}. */
-  static {
+  /** @internal Initialise les 5 langues intégrées. Appelée juste après la déclaration de la classe. */
+  private static _initBuiltinLangs(): void {
     CnilPasswordChecker.addLang("fr", {
       minLength: "Au moins 12 caractères",
       hasUppercase: "Au moins 1 lettre majuscule",
@@ -204,4 +204,7 @@ export default class CnilPasswordChecker {
     }));
   }
 }
+
+// Initialisation des langues intégrées (remplace le bloc static {} non supporté par vite-plugin-remove-console)
+CnilPasswordChecker["_initBuiltinLangs"]();
 
