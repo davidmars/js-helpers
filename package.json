@@ -1,15 +1,36 @@
 {
   "name": "@davidmars/js-helpers",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "private": false,
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./*": {
+      "types": "./dist/*.d.ts",
+      "require": "./dist/*.js",
+      "default": "./dist/*.js"
+    },
+    "./dist/*": {
+      "types": "./dist/*.d.ts",
+      "require": "./dist/*.js",
+      "default": "./dist/*.js"
+    }
+  },
+  "sideEffects": false,
   "files": [
     "/dist"
   ],
   "scripts": {
     "dev": "vite",
     "build": "tsc",
+    "check": "npm run build && npm run check:runtime && npm run check:consumers",
+    "check:runtime": "node scripts/check-runtime-imports.mjs",
+    "check:consumers": "node scripts/validate-consumers.mjs",
     "preview": "vite preview",
     "version patch & push": "npm version patch && git push --all",
     "publish-lib": "npm run build && npm publish"

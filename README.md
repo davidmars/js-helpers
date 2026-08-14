@@ -1,5 +1,35 @@
 # js-helpers
 
+## Installation et imports
+
+Le package est la source canonique des helpers JavaScript partagés. Les applications doivent l'installer directement et ne pas passer par une copie ou un lien placé dans un autre dépôt.
+
+```bash
+npm install @davidmars/js-helpers
+```
+
+Le point d'entrée principal expose les helpers historiques :
+
+```typescript
+import { humanFileSize, isValidEmail } from '@davidmars/js-helpers'
+```
+
+Pour les autres helpers, utiliser leurs sous-chemins publics. Ces imports fins évitent de charger le reste de la bibliothèque :
+
+```typescript
+import plural from '@davidmars/js-helpers/string/plural'
+import copyClipboard from '@davidmars/js-helpers/browser/copyClipboard'
+import { randomEntry } from '@davidmars/js-helpers/array/randomEntry'
+```
+
+Ne jamais importer depuis `dist/` ou depuis une copie de `src/`. Après une modification, incrémenter la version, lancer `npm run build`, puis publier le package avant de mettre à jour les lockfiles des applications.
+
+Avant de finaliser une migration, contrôler Project, Auth, Dashboard et Ty-Vortex :
+
+```bash
+npm run check:consumers
+```
+
 > Collection de fonctions et classes utilitaires TypeScript pour les projets web modernes.
 > Stack : **TypeScript** · **Vite**
 

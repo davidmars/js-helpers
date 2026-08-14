@@ -1,4 +1,4 @@
-import EventEmitter from "eventemitter3";
+import { EventEmitter } from "eventemitter3";
 
 declare interface FileDropperEmitter {
   on(event: 'filesDropped', listener: (files: File[]) => void): this;
