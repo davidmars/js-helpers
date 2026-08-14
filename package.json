@@ -1,6 +1,6 @@
 {
   "name": "@davidmars/js-helpers",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "private": false,
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -28,6 +28,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc",
+    "prepare": "npm run build",
     "check": "npm run build && npm run check:runtime && npm run check:consumers",
     "check:runtime": "node scripts/check-runtime-imports.mjs",
     "check:consumers": "node scripts/validate-consumers.mjs",
